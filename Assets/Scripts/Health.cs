@@ -6,6 +6,11 @@ public class Health : MonoBehaviour
 {
     [SerializeField] float maxHealth = 100;
     [SerializeField] float currentHealth;
+    [SerializeField] UI_Health healthUI;
+
+    public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
+    public float Percentage => currentHealth / maxHealth;
 
     Player player;
     Zombie zombie;
@@ -32,13 +37,25 @@ public class Health : MonoBehaviour
         Debug.Log(name + " took " + damage + " damage");
         currentHealth = Mathf.Max(currentHealth - damage, 0);
 
-        if (player != null) player.UI_Foreground.Attacked();
+        if (player != null)
+        {
+            player.UI_Foreground.Attacked();
+            player.SFX.PlayBodyHitSound();
+        }    
 
         if (currentHealth <= 0)
         {
             if (zombie != null) zombie.ZombieDeath();
             else if (player != null) player.PlayerDeath();
         }
+
+        healthUI?.UpdateHealth();
+    }
+
+    public void Heal(float amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        healthUI?.UpdateHealth();
     }
 
     public bool IsAlive => currentHealth > 0;

@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public UI_Foreground UI_Foreground { get; private set; }
     [field: SerializeField] public Player_ZombieSpawning ZombieSpawning { get; private set; }
+    [field: SerializeField] public Ammo RifleAmmo { get; private set; }
+    [field: SerializeField] public Ammo PistolAmmo { get; private set; }
+    [field: SerializeField] public Player_SFX SFX { get; private set; }
 
     private void Awake()
     {
@@ -19,7 +22,10 @@ public class Player : MonoBehaviour
     {
         print("Player died");
         PlayerSpwan.ResetPlayerPosition();
+        Game.Instance.NewRound();
         Health.ResetHealth();
+        RifleAmmo.Reset();
+        PistolAmmo.Reset();
         ZombieSpawning.Reset();
     }
 

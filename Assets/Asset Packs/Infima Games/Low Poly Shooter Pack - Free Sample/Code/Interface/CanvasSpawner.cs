@@ -9,6 +9,7 @@ namespace InfimaGames.LowPolyShooterPack.Interface
     /// </summary>
     public class CanvasSpawner : MonoBehaviour
     {
+        [SerializeField] bool spawn;
         #region FIELDS SERIALIZED
 
         [Header("Settings")]
@@ -26,8 +27,9 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// </summary>
         private void Awake()
         {
+
             //Spawn Interface.
-            Instantiate(canvasPrefab);
+            if (spawn) Instantiate(canvasPrefab);
         }
 
         #endregion

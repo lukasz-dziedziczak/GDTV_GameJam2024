@@ -14,6 +14,7 @@ namespace InfimaGames.LowPolyShooterPack
         [Header("Zombie Game")]
         [SerializeField] float weaponDamage;
         [SerializeField] float weaponDamageVariation;
+        [field: SerializeField] public Ammo AmmoSupply { get; private set; }
 
         [Header("Firing")]
 
@@ -249,8 +250,14 @@ namespace InfimaGames.LowPolyShooterPack
         public override void FillAmmunition(int amount)
         {
             //Update the value by a certain amount.
-            ammunitionCurrent = amount != 0 ? Mathf.Clamp(ammunitionCurrent + amount, 
-                0, GetAmmunitionTotal()) : magazineBehaviour.GetAmmunitionTotal();
+            int ammmoNeeded = magazineBehaviour.GetAmmunitionTotal() - ammunitionCurrent;
+            int ammoAvailable = AmmoSupply.Amount;
+            int ammoToTake = Mathf.Min(ammoAvailable, ammmoNeeded);
+            AmmoSupply.Remove(ammoToTake);
+            ammunitionCurrent += ammoToTake;
+
+            /*ammunitionCurrent = amount != 0 ? Mathf.Clamp(ammunitionCurrent + amount, 
+                0, GetAmmunitionTotal()) : magazineBehaviour.GetAmmunitionTotal();*/
         }
 
         public override void EjectCasing()
@@ -258,6 +265,16 @@ namespace InfimaGames.LowPolyShooterPack
             //Spawn casing prefab at spawn point.
             if(prefabCasing != null && socketEjection != null)
                 Instantiate(prefabCasing, socketEjection.position, socketEjection.rotation);
+        }
+
+        public override int GetAmmunitionSupply()
+        {
+            return AmmoSupply.Amount;
+        }
+
+        public override bool HasAmmunitionInSupply()
+        {
+            return AmmoSupply.Amount > 0;
         }
 
         #endregion

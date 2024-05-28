@@ -74,6 +74,10 @@ namespace InfimaGames.LowPolyShooterPack
         /// Returns Total Ammunition.
         /// </summary>
         public abstract int GetAmmunitionTotal();
+        /// <summary>
+        /// Returns Total Ammunition.
+        /// </summary>
+        public abstract int GetAmmunitionSupply();
 
         /// <summary>
         /// Returns the Weapon's Animator component.
@@ -88,6 +92,10 @@ namespace InfimaGames.LowPolyShooterPack
         /// Returns true if the weapon has any ammunition left.
         /// </summary>
         public abstract bool HasAmmunition();
+        /// <summary>
+        /// Returns true if the weapon has any ammunition left.
+        /// </summary>
+        public abstract bool HasAmmunitionInSupply();
 
         /// <summary>
         /// Returns true if the weapon is full of ammunition.

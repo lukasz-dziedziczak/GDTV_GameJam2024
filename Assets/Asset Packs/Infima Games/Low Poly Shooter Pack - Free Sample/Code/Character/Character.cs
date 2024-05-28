@@ -17,6 +17,7 @@ namespace InfimaGames.LowPolyShooterPack
 		#region FIELDS SERIALIZED
 
 		[field: SerializeField] public Health Health { get; private set; }
+		[field: SerializeField] public Player Player { get; private set; }
 
 		[Header("Inventory")]
 		
@@ -188,6 +189,8 @@ namespace InfimaGames.LowPolyShooterPack
 
 			//Refresh!
 			RefreshWeaponSetup();
+
+			if (Player == null) Player = GetComponent<Player>();
 		}
 		protected override void Start()
 		{
@@ -610,6 +613,9 @@ namespace InfimaGames.LowPolyShooterPack
 		{
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
+				return;
+
+			if (!equippedWeapon.HasAmmunitionInSupply())
 				return;
 			
 			//Block.

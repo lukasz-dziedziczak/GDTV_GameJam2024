@@ -10,6 +10,7 @@ namespace InfimaGames.LowPolyShooterPack
     public class Magazine : MagazineBehaviour
     {
         #region FIELDS SERIALIZED
+        [field: SerializeField] public Ammo AmmoSupply { get; private set; }
 
         [Header("Settings")]
         

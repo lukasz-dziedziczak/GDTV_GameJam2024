@@ -431,8 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 20
-  weaponDamageVariation: 5
+  weaponDamage: 40
+  weaponDamageVariation: 10
   automatic: 1
   projectileImpulse: 400
   roundsPerMinutes: 610

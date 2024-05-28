@@ -16,6 +16,8 @@ public class Zombie : MonoBehaviour
     [field: SerializeField] public ZombieClaw RightClaw { get; private set; }
     [field: SerializeField] public ZombieAI AI { get; private set; }
     [field: SerializeField] public ZombieSound Sound { get; private set; }
+    [field: SerializeField] public Transform Head { get; private set; }
+    [field: SerializeField] public float HeadshotDistance { get; private set; }
 
     public static event Action<Zombie> OnZombieDeath;
 

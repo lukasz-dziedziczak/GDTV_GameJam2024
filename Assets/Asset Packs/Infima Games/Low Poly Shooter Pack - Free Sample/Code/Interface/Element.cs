@@ -29,6 +29,9 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// Equipped Weapon.
         /// </summary>
         protected WeaponBehaviour equippedWeapon;
+
+        protected Player player;
+        protected Weapon weapon => equippedWeapon.GetComponent<Weapon>();
         
         #endregion
 

@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Projectile : MonoBehaviour {
 
+	[SerializeField] float headshotMultiplier = 2.5f;
 	[Range(5, 100)]
 	[Tooltip("After how long time should the bullet prefab be destroyed?")]
 	public float destroyAfter;
@@ -51,7 +52,11 @@ public class Projectile : MonoBehaviour {
 		if (collision.gameObject.TryGetComponent<Zombie>(out Zombie zombie) && zombie.Health.IsAlive)
 		{
 			//print("hit zombie, applying " + weaponDamage + " damage");
-			zombie.Health.ApplyDamage(weaponDamage);
+			float distanceToHead = Vector3.Distance(collision.contacts[0].point, zombie.Head.position);
+			//print("distanceToHead = " + distanceToHead);
+			bool isHeadshot = distanceToHead <= zombie.HeadshotDistance;
+			if (isHeadshot) print("HEADSHOT!");
+			zombie.Health.ApplyDamage(isHeadshot ? weaponDamage * headshotMultiplier : weaponDamage);
 		}
 
 		//Ignore collisions with other projectiles.

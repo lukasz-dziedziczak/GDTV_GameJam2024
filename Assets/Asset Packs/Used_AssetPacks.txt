@@ -10,3 +10,11 @@ https://assetstore.unity.com/packages/3d/animations/zombie-animation-pack-free-1
 https://assetstore.unity.com/packages/3d/characters/hungry-zombie-99750
 https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645
 https://assetstore.unity.com/packages/audio/music/electronic/free-cyberpunk-music-loops-95045
+
+https://assetstore.unity.com/packages/3d/props/weapons/ammo-box-7701
+https://assetstore.unity.com/packages/3d/props/ammo-157327
+https://assetstore.unity.com/packages/3d/props/weapons/12x70-rem-ammo-box-193342
+https://assetstore.unity.com/packages/3d/props/first-aid-set-160073
+https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116
+
+https://www.dafont.com/theme.php?cat=110&l[]=10&l[]=1
