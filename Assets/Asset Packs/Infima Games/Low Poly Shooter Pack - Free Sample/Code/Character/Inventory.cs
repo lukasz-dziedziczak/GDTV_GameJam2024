@@ -97,6 +97,15 @@ namespace InfimaGames.LowPolyShooterPack
         public override WeaponBehaviour GetEquipped() => equipped;
         public override int GetEquippedIndex() => equippedIndex;
 
+        public void MatchStart()
+        {
+            Weapon[] weapons = GetComponentsInChildren<Weapon>();
+            foreach (Weapon weapon in weapons)
+            {
+                weapon.MatchStart();
+            }
+        }
+
         #endregion
     }
 }

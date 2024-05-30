@@ -133,9 +133,12 @@ namespace InfimaGames.LowPolyShooterPack
 			
         protected override void FixedUpdate()
         {
+            if (!Game.Instance.Started) return;
+
             //Move.
             MoveCharacter();
-            
+            DropCharacter();
+
             //Unground.
             grounded = false;
         }
@@ -179,6 +182,16 @@ namespace InfimaGames.LowPolyShooterPack
             
             //Update Velocity.
             Velocity = new Vector3(movement.x, 0.0f, movement.z);
+        }
+
+        private void DropCharacter()
+        {
+            if (!grounded)
+            {
+                Vector3 velocity = Velocity;
+                velocity.y = -9.8f;
+                Velocity = velocity;
+            }
         }
 
         /// <summary>

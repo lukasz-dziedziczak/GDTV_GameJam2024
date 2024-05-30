@@ -9,12 +9,19 @@ public class Game : MonoBehaviour
 
     [field: SerializeField] public int KillCount { get; private set; }
     [field: SerializeField] public float MatchLength { get; private set; }
-    [field: SerializeField] public bool Started { get; private set; } = true;
+    [field: SerializeField] public bool Started { get; private set; }
+    [field: SerializeField] public CameraController CameraController { get; private set; }
 
     [SerializeField] UI_KillCount killCount;
     [SerializeField] UI_PickupNotification pickupNotification;
+    [SerializeField] Transform startCameraPosition;
+    [SerializeField] PlayerSpawn[] spawnPoints;
+    [SerializeField] UI ui;
+    [SerializeField] Player player;
 
     public static UI_PickupNotification PickupNotification => Instance.pickupNotification;
+    public static Transform StartCameraPostion => Instance.startCameraPosition;
+    public static UI UI => Instance.ui;
     
 
     private void Awake()
@@ -22,12 +29,24 @@ public class Game : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
+        if (CameraController == null) CameraController = FindObjectOfType<CameraController>();
+
         Zombie.OnZombieDeath += OnZombieDeath;
     }
 
     private void Start()
     {
-        NewRound();
+        ShowStartScreen();
+        //NewRound();
+    }
+
+    private void ShowStartScreen()
+    {
+        Music.PlayMeunMusic();
+        Started = false;
+        LockCursor(false);
+        UI.SwitchToStart();
+        CameraController.SwitchToStartPosition();
     }
 
     private void OnDisable()
@@ -54,6 +73,12 @@ public class Game : MonoBehaviour
         SpawnPickups();
         KillCount = 0;
         MatchLength = 0;
+        killCount.UpdateKillCount();
+        CameraController.SwitchToPlayer();
+        UI.SwitchToGame();
+        LockCursor(true);
+        Music.PlayMatchMusic();
+        player.StartRound();
         Started = true;
     }
 
@@ -67,4 +92,32 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static void StartMatch()
+    {
+        Instance.NewRound();
+    }
+
+    public static void EndMatch()
+    {
+        Instance.Started = false;
+        Instance.CameraController.SwitchToStartPosition();
+        Instance.ui.SwitchToEnd();
+        LockCursor(false);
+        Music.PlayMeunMusic();
+    }
+
+    public static void LockCursor(bool isLocked)
+    {
+        Cursor.visible = !isLocked;
+        //Update cursor lock state.
+        Cursor.lockState = isLocked ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
+    public static PlayerSpawn RandomSpawn
+    {
+        get
+        {
+            return Instance.spawnPoints[UnityEngine.Random.Range(0, Instance.spawnPoints.Length)];
+        }
+    }
 }

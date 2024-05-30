@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player_ZombieSpawning : MonoBehaviour
 {
+    [SerializeField] Player player;
     [SerializeField] List<ZombieSpawner> zombieSpawners = new List<ZombieSpawner>();
     [SerializeField] List<Zombie> zombies = new List<Zombie>();
     int zombiesToSpawn = 0;
@@ -14,6 +15,10 @@ public class Player_ZombieSpawning : MonoBehaviour
     float timeSinceLastSpawn => Time.time - lastSpawnTime;
     [SerializeField] int baseSpawnAmount;
     [SerializeField] int perRoundAdditional;
+    [SerializeField] float idleTime;
+
+    float lastKillTime = Mathf.Infinity;
+    float timeSinceLastKill => Time.time - lastKillTime;
 
     private void Awake()
     {
@@ -32,6 +37,14 @@ public class Player_ZombieSpawning : MonoBehaviour
 
     private void Update()
     {
+        if (!Game.Instance.Started) return;
+
+        if (timeSinceLastKill > idleTime)
+        {
+            SetSpawnAmount();
+            lastKillTime = Time.time;
+        }
+
         if (zombiesToSpawn > 0)
         {
             if (timeSinceLastSpawn > spawnRate)
@@ -102,6 +115,7 @@ public class Player_ZombieSpawning : MonoBehaviour
 
     private void OnZombieDeath(Zombie zombie)
     {
+        lastKillTime = Time.time;
         if (zombies.Contains(zombie)) zombies.Remove(zombie);
 
         if (zombies.Count == 0 && zombiesToSpawn == 0)

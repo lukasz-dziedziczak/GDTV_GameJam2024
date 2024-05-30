@@ -277,6 +277,11 @@ namespace InfimaGames.LowPolyShooterPack
             return AmmoSupply.Amount > 0;
         }
 
+        public void MatchStart()
+        {
+            ammunitionCurrent = magazineBehaviour.GetAmmunitionTotal();
+        }
+
         #endregion
 
 

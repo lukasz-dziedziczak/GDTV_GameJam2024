@@ -566,6 +566,8 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryFire(InputAction.CallbackContext context)
 		{
+			if (!Game.Instance.Started) return;
+
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
 				return;
@@ -611,8 +613,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryPlayReload(InputAction.CallbackContext context)
 		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
+            if (!Game.Instance.Started) return;
+
+            //Block while the cursor is unlocked.
+            if (!cursorLocked)
 				return;
 
 			if (!equippedWeapon.HasAmmunitionInSupply())
@@ -638,8 +642,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryInspect(InputAction.CallbackContext context)
 		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
+            if (!Game.Instance.Started) return;
+
+            //Block while the cursor is unlocked.
+            if (!cursorLocked)
 				return;
 			
 			//Block.
@@ -661,8 +667,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryAiming(InputAction.CallbackContext context)
 		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
+            if (!Game.Instance.Started) return;
+
+            //Block while the cursor is unlocked.
+            if (!cursorLocked)
 				return;
 
 			//Switch.
@@ -684,8 +692,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryHolster(InputAction.CallbackContext context)
 		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
+            if (!Game.Instance.Started) return;
+
+            //Block while the cursor is unlocked.
+            if (!cursorLocked)
 				return;
 			
 			//Switch.
@@ -709,8 +719,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryRun(InputAction.CallbackContext context)
 		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
+            if (!Game.Instance.Started) return;
+
+            //Block while the cursor is unlocked.
+            if (!cursorLocked)
 				return;
 			
 			//Switch.
@@ -733,8 +745,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryInventoryNext(InputAction.CallbackContext context)
 		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
+            if (!Game.Instance.Started) return;
+
+            //Block while the cursor is unlocked.
+            if (!cursorLocked)
 				return;
 			
 			//Null Check.
@@ -762,8 +776,10 @@ namespace InfimaGames.LowPolyShooterPack
 			}
 		}
 		
-		public void OnLockCursor(InputAction.CallbackContext context)
+		/*public void OnLockCursor(InputAction.CallbackContext context)
 		{
+			return;
+
 			//Switch.
 			switch (context)
 			{
@@ -775,23 +791,27 @@ namespace InfimaGames.LowPolyShooterPack
 					UpdateCursorState();
 					break;
 			}
-		}
+		}*/
 		
 		/// <summary>
 		/// Movement.
 		/// </summary>
 		public void OnMove(InputAction.CallbackContext context)
 		{
-			//Read.
-			axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
+            if (!Game.Instance.Started) return;
+
+            //Read.
+            axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
 		}
 		/// <summary>
 		/// Look.
 		/// </summary>
 		public void OnLook(InputAction.CallbackContext context)
 		{
-			//Read.
-			axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
+            if (!Game.Instance.Started) return;
+
+            //Read.
+            axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
 		}
 
 		/// <summary>
@@ -799,8 +819,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnUpdateTutorial(InputAction.CallbackContext context)
 		{
-			//Switch.
-			tutorialTextVisible = context switch
+            if (!Game.Instance.Started) return;
+
+            //Switch.
+            tutorialTextVisible = context switch
 			{
 				//Started. Show the tutorial.
 				{phase: InputActionPhase.Started} => true,

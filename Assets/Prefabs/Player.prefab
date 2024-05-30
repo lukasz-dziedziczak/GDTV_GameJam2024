@@ -1091,11 +1091,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1e76d4dad63574291658568482e42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 4647116432798091575}
   zombieSpawners: []
   zombies: []
   spawnRate: 0.5
   baseSpawnAmount: 3
   perRoundAdditional: 2
+  idleTime: 20
 --- !u!135 &5212851710725101179
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2282,6 +2284,8 @@ MonoBehaviour:
   <RifleAmmo>k__BackingField: {fileID: 8727011979401558971}
   <PistolAmmo>k__BackingField: {fileID: 1131701519176429760}
   <SFX>k__BackingField: {fileID: 1009625068724795732}
+  <CameraSocket>k__BackingField: {fileID: 8589789094623647708}
+  <Inventory>k__BackingField: {fileID: 7574973069711629494}
 --- !u!1 &5745847061390154145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2426,7 @@ GameObject:
   - component: {fileID: 6400779131615833391}
   - component: {fileID: 3959351507284435582}
   - component: {fileID: 2134976508013231068}
+  - component: {fileID: 431806951313617527}
   m_Layer: 9
   m_Name: Camera
   m_TagString: MainCamera
@@ -2588,6 +2593,19 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &431806951313617527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913904543675395157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44216f07c3a82a498493e7981ac438c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4647116432798091575}
 --- !u!1 &5968140682388504446
 GameObject:
   m_ObjectHideFlags: 0

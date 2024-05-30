@@ -13,7 +13,7 @@ public class ZombieSound : MonoBehaviour
 
     private void Start()
     {
-        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.pitch = Random.Range(0.90f, 1.10f);
     }
 
     public void OnDeath()
