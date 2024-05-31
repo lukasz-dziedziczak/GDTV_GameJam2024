@@ -104,6 +104,7 @@ public class Game : MonoBehaviour
         Instance.ui.SwitchToEnd();
         LockCursor(false);
         Music.PlayMeunMusic();
+        Instance.player.ZombieSpawning.MatchStart();
     }
 
     public static void LockCursor(bool isLocked)

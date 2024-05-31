@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
         PistolAmmo.Reset();
         ZombieSpawning.MatchStart();
         Inventory.MatchStart();
-        //Game.RandomSpawn.Spawn(this);
         spawn = Game.RandomSpawn;
         spawning = 9;
     }

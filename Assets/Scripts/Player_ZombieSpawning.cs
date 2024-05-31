@@ -122,14 +122,18 @@ public class Player_ZombieSpawning : MonoBehaviour
 
     public void MatchStart()
     {
-        foreach(Zombie zombie in zombies)
+        round = 0;
+        zombiesToSpawn = 0;
+        lastSpawnTime = Time.time;
+        SetSpawnAmount();
+    }
+
+    public void MatchEnd()
+    {
+        foreach (Zombie zombie in zombies)
         {
             Destroy(zombie.gameObject);
         }
         zombies.Clear();
-
-        round = 0;
-        lastSpawnTime = Time.time;
-        SetSpawnAmount();
     }
 }

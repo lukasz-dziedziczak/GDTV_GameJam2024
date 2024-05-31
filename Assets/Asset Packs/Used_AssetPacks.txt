@@ -18,3 +18,5 @@ https://assetstore.unity.com/packages/3d/props/first-aid-set-160073
 https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116
 
 https://www.dafont.com/theme.php?cat=110&l[]=10&l[]=1
+
+https://assetstore.unity.com/packages/vfx/particles/spells/52-special-effects-pack-10419
