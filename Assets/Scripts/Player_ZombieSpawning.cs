@@ -30,11 +30,6 @@ public class Player_ZombieSpawning : MonoBehaviour
         Zombie.OnZombieDeath -= OnZombieDeath;
     }
 
-    private void Start()
-    {
-        SetSpawnAmount();
-    }
-
     private void Update()
     {
         if (!Game.Instance.Started) return;
@@ -125,7 +120,7 @@ public class Player_ZombieSpawning : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void MatchStart()
     {
         foreach(Zombie zombie in zombies)
         {

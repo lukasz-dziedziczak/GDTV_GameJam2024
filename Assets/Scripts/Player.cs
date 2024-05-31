@@ -15,9 +15,20 @@ public class Player : MonoBehaviour
     [field: SerializeField] public Transform CameraSocket { get; private set; }
     [field: SerializeField] public Inventory Inventory { get; private set; }
 
+    int spawning;
+    PlayerSpawn spawn;
+
     private void Awake()
     {
         if (UI_Foreground == null) UI_Foreground = FindObjectOfType<UI_Foreground>();
+    }
+
+    private void Update()
+    {
+        if (spawning-- > 0)
+        {
+            spawn.Spawn(this);
+        }
     }
 
     public void PlayerDeath()
@@ -29,13 +40,14 @@ public class Player : MonoBehaviour
 
     public void StartRound()
     {
-        Game.RandomSpawn.Spawn(this);
-        
         Health.ResetHealth();
         RifleAmmo.Reset();
         PistolAmmo.Reset();
-        ZombieSpawning.Reset();
+        ZombieSpawning.MatchStart();
         Inventory.MatchStart();
+        //Game.RandomSpawn.Spawn(this);
+        spawn = Game.RandomSpawn;
+        spawning = 9;
     }
 
 }
