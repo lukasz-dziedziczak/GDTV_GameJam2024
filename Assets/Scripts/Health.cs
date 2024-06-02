@@ -59,4 +59,6 @@ public class Health : MonoBehaviour
     }
 
     public bool IsAlive => currentHealth > 0;
+
+    public bool IsFull => currentHealth == maxHealth;
 }

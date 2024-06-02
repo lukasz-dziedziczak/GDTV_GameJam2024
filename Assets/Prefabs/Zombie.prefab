@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 8799442299214067978}
   - component: {fileID: 6179123108903349619}
   - component: {fileID: 4239237118941337258}
+  - component: {fileID: 6117871898249434656}
   m_Layer: 17
   m_Name: Zombie
   m_TagString: Blood
@@ -270,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  healthUI: {fileID: 0}
 --- !u!114 &8799442299214067978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +326,22 @@ MonoBehaviour:
   walkingSpeed: 1
   runningSpeed: 4.5
   attackRange: 1.2
+--- !u!114 &6117871898249434656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010102448865301371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47bdcd69c40779c4caa7527dd40aa94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  damageAmount: 50
+  damageRate: 0.8
+  height: 16
 --- !u!1001 &1801179391443368154
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class HealthPickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Player>(out Player player))
+        if (other.TryGetComponent<Player>(out Player player) && !player.Health.IsFull)
         {
             player.Health.Heal(amount);
             player.SFX.PlayPickUpHealthSound();

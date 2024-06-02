@@ -10,6 +10,8 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
 
+        [SerializeField] float dropRate = 1f;
+
         [Header("Audio Clips")]
         
         [Tooltip("The audio clip that is played while walking.")]
@@ -189,8 +191,14 @@ namespace InfimaGames.LowPolyShooterPack
             if (!grounded)
             {
                 Vector3 velocity = Velocity;
-                velocity.y = -9.8f;
-                Velocity = velocity;
+                if (velocity.y > -9.8f)
+                {
+                    velocity.y -= dropRate * Time.deltaTime;
+                    if (velocity.y < -9.8f) velocity.y = -9.8f;
+                    Velocity = velocity;
+                }
+                
+                
             }
         }
 

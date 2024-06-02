@@ -16,6 +16,7 @@ public class Player_ZombieSpawning : MonoBehaviour
     [SerializeField] int baseSpawnAmount;
     [SerializeField] int perRoundAdditional;
     [SerializeField] float idleTime;
+    [SerializeField] float minSpawnDistance;
 
     float lastKillTime = Mathf.Infinity;
     float timeSinceLastKill => Time.time - lastKillTime;
@@ -53,7 +54,7 @@ public class Player_ZombieSpawning : MonoBehaviour
 
         ZombieSpawner spawner = randomSpawner;
         int attempts = 0;
-        while (!spawner.SpawnerIsClear && attempts < 100)
+        while ((DistanceTo(spawner) < minSpawnDistance || !spawner.SpawnerIsClear) && attempts < 100)
         {
             spawner = randomSpawner;
             attempts++;
@@ -135,5 +136,10 @@ public class Player_ZombieSpawning : MonoBehaviour
             Destroy(zombie.gameObject);
         }
         zombies.Clear();
+    }
+
+    public float DistanceTo(ZombieSpawner spawner)
+    {
+        return Vector3.Distance(transform.position, spawner.transform.position);
     }
 }

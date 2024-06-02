@@ -282,6 +282,11 @@ namespace InfimaGames.LowPolyShooterPack
             ammunitionCurrent = magazineBehaviour.GetAmmunitionTotal();
         }
 
+        public override bool AmmoInMagFull()
+        {
+            return ammunitionCurrent == magazineBehaviour.GetAmmunitionTotal();
+        }
+
         #endregion
 
 

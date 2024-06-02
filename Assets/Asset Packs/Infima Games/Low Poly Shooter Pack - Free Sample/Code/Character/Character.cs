@@ -18,6 +18,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		[field: SerializeField] public Health Health { get; private set; }
 		[field: SerializeField] public Player Player { get; private set; }
+		[SerializeField] UI ui;
 
 		[Header("Inventory")]
 		
@@ -619,7 +620,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!cursorLocked)
 				return;
 
-			if (!equippedWeapon.HasAmmunitionInSupply())
+			if (!equippedWeapon.HasAmmunitionInSupply() || equippedWeapon.AmmoInMagFull())
 				return;
 			
 			//Block.
@@ -775,30 +776,33 @@ namespace InfimaGames.LowPolyShooterPack
 					break;
 			}
 		}
-		
-		/*public void OnLockCursor(InputAction.CallbackContext context)
-		{
-			return;
 
-			//Switch.
-			switch (context)
+		public void OnLockCursor(InputAction.CallbackContext context)
+		{
+            if (!Game.Instance.Started) return;
+
+			if (ui.PauseMenuShowing) ui.HidePauseMenu();
+			else ui.ShowPauseMenu();
+
+            /*//Switch.
+            switch (context)
 			{
 				//Performed.
-				case {phase: InputActionPhase.Performed}:
+				case { phase: InputActionPhase.Performed }:
 					//Toggle the cursor locked value.
 					cursorLocked = !cursorLocked;
 					//Update the cursor's state.
 					UpdateCursorState();
 					break;
-			}
-		}*/
-		
+			}*/
+		}
+
 		/// <summary>
 		/// Movement.
 		/// </summary>
 		public void OnMove(InputAction.CallbackContext context)
 		{
-            if (!Game.Instance.Started) return;
+            if (!Game.Instance.Started || ui.PauseMenuShowing) return;
 
             //Read.
             axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
@@ -876,5 +880,10 @@ namespace InfimaGames.LowPolyShooterPack
 		#endregion
 
 		#endregion
+
+		public bool IsPauseMenuShowing()
+		{
+			return ui.PauseMenuShowing;
+		}
 	}
 }

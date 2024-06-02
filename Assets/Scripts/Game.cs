@@ -104,7 +104,31 @@ public class Game : MonoBehaviour
         Instance.ui.SwitchToEnd();
         LockCursor(false);
         Music.PlayMeunMusic();
+        Instance.player.ZombieSpawning.MatchEnd();
+    }
+
+    public static void ResetRound()
+    {
+        Instance.SpawnPickups();
+        Instance.KillCount = 0;
+        Instance.MatchLength = 0;
+        Instance.killCount.UpdateKillCount();
+        UI.SwitchToGame();
+        LockCursor(true);
+        Music.PlayMatchMusic();
+        Instance.player.StartRound();
+        Instance.Started = true;
+        Instance.player.ZombieSpawning.MatchEnd();
         Instance.player.ZombieSpawning.MatchStart();
+    }
+
+    public static void ReturnToMenu()
+    {
+        Instance.player.ZombieSpawning.MatchEnd();
+        Instance.Started = false;
+        Instance.CameraController.SwitchToStartPosition();
+        Instance.ui.SwitchToStart();
+        Music.PlayMeunMusic();
     }
 
     public static void LockCursor(bool isLocked)

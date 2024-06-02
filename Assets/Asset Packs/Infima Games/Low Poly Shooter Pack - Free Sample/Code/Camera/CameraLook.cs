@@ -10,6 +10,8 @@ namespace InfimaGames.LowPolyShooterPack
     public class CameraLook : MonoBehaviour
     {
         #region FIELDS SERIALIZED
+
+        [SerializeField] UI ui;
         
         [Header("Settings")]
         
@@ -71,6 +73,8 @@ namespace InfimaGames.LowPolyShooterPack
         }
         private void LateUpdate()
         {
+            if (ui.PauseMenuShowing) return;
+
             //Frame Input. The Input to add this frame!
             Vector2 frameInput = playerCharacter.IsCursorLocked() ? playerCharacter.GetInputLook() : default;
             //Sensitivity.

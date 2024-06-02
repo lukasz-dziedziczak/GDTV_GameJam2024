@@ -1098,6 +1098,7 @@ MonoBehaviour:
   baseSpawnAmount: 3
   perRoundAdditional: 2
   idleTime: 14
+  minSpawnDistance: 8
 --- !u!135 &5212851710725101179
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1414,6 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74379b44be369043afd8160e1b39c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   sensitivity: {x: 1, y: 1}
   yClamp: {x: -89, y: 89}
   smooth: 0
@@ -1698,6 +1700,7 @@ GameObject:
   - component: {fileID: 5774544370016157429}
   - component: {fileID: 7226582773131441502}
   - component: {fileID: 4647116432798091575}
+  - component: {fileID: 8736542926579153990}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1884,6 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba9a63e484e8f142b3b13cfd976e290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropRate: 50
   audioClipWalking: {fileID: 8300000, guid: 74abbbf1b1724e34b894191db38e10a0, type: 3}
   audioClipRunning: {fileID: 8300000, guid: d2add02f58e61e640aba3ae9110591cb, type: 3}
   speedWalking: 4
@@ -1902,6 +1906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 7226582773131441502}
   <Player>k__BackingField: {fileID: 4647116432798091575}
+  ui: {fileID: 0}
   inventory: {fileID: 7574973069711629494}
   cameraWorld: {fileID: 4589761608113700346}
   dampTimeLocomotion: 0.1
@@ -2286,6 +2291,22 @@ MonoBehaviour:
   <SFX>k__BackingField: {fileID: 1009625068724795732}
   <CameraSocket>k__BackingField: {fileID: 8589789094623647708}
   <Inventory>k__BackingField: {fileID: 7574973069711629494}
+--- !u!114 &8736542926579153990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634872332980108786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47bdcd69c40779c4caa7527dd40aa94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4647116432798091575}
+  damageAmount: 10
+  damageRate: 0.8
+  height: 16
 --- !u!1 &5745847061390154145
 GameObject:
   m_ObjectHideFlags: 0
