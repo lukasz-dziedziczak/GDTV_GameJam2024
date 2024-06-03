@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
     [SerializeField] GameObject game;
     [SerializeField] GameObject end;
     [SerializeField] GameObject pauseMenu;
+    [field: SerializeField] public UI_PickupNotification PickupNotification {  get; private set; }
 
     private void Start()
     {

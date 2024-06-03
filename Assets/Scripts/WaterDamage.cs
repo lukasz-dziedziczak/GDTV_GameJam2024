@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_WaterDamage : MonoBehaviour
+public class WaterDamage : MonoBehaviour
 {
-    [SerializeField] Player player;
+    [SerializeField] Health health;
     [SerializeField] float damageAmount;
     [SerializeField] float damageRate;
     [SerializeField] float height = 16f;
@@ -14,7 +14,7 @@ public class Player_WaterDamage : MonoBehaviour
 
     private void Awake()
     {
-        if (player == null) player = GetComponent<Player>();
+        if (health == null) health = GetComponent<Health>();
     }
 
     private void Update()
@@ -23,7 +23,7 @@ public class Player_WaterDamage : MonoBehaviour
         {
             if (timeSinceLastDamage > damageRate)
             {
-                player.Health.ApplyDamage(damageAmount);
+                health.ApplyDamage(damageAmount);
                 lastDamageTime = Time.time;
             }
         }

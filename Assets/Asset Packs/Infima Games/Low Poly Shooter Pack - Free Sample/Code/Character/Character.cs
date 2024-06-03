@@ -600,7 +600,10 @@ namespace InfimaGames.LowPolyShooterPack
 					}
 					//Fire Empty.
 					else
+					{ 
 						FireEmpty();
+						ui.PickupNotification.Show("Reload");
+                    }
 					break;
 				//Canceled.
 				case {phase: InputActionPhase.Canceled}:

@@ -6253,7 +6253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bdcd69c40779c4caa7527dd40aa94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  health: {fileID: 4373465141047558371}
   damageAmount: 50
   damageRate: 0.8
   height: 16

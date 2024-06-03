@@ -20,12 +20,6 @@ public class UI_PickupNotification : MonoBehaviour
         text = GetComponent<TMP_Text>();
     }
 
-    private void Start()
-    {
-        Show("Start");
-        
-    }
-
     public void Show(string notification)
     {
         text.text = notification;
